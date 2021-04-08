@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="">
+  <title>Markdown语法笔记 | Orange的小站</title>
+  <meta name="author" content="Orange" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="Markdown语法笔记" />
+  
+  <meta name="description" content="标题 字体：粗斜体 删除线 下划线 列表：有序、无序、任务 脚注 图片 超链接 表格 代码块 区块引用  标题“标题”使用#来标记，例如一级标题就是： # 一级标题    ## 二级标题 二级标题三级标题四级标题以此类推  可使用&#x3D; 和- 标记标题，该编辑器无  段落在字体的末尾加两个空格然后回车就是段落   在段落后面使用一个空喊表示重新开始一个段落 该编辑器无段落 字体_斜体_：斜体就是用一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown语法笔记">
+<meta property="og:url" content="https://orangeh.gitee.io/2021/04/08/Markdown%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Orange的小站">
+<meta property="og:description" content="标题 字体：粗斜体 删除线 下划线 列表：有序、无序、任务 脚注 图片 超链接 表格 代码块 区块引用  标题“标题”使用#来标记，例如一级标题就是： # 一级标题    ## 二级标题 二级标题三级标题四级标题以此类推  可使用&#x3D; 和- 标记标题，该编辑器无  段落在字体的末尾加两个空格然后回车就是段落   在段落后面使用一个空喊表示重新开始一个段落 该编辑器无段落 字体_斜体_：斜体就是用一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://orangeh.gitee.io/null">
+<meta property="article:published_time" content="2021-04-08T03:07:00.000Z">
+<meta property="article:modified_time" content="2021-04-08T03:08:09.188Z">
+<meta property="article:author" content="Orange">
+<meta property="article:tag" content="Markdown语法笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://orangeh.gitee.io/null">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">Orange的小站</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Orange的小站</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">Markdown语法笔记</h1>
+                
+                <ul class="kratos-post-meta text-center">
+                    <li><i class="fa fa-calendar"></i> 2021-04-08</li>
+                    <li><i class="fa fa-user"></i> 作者 Orange</li>
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            1464
+                        
+                        字
+                    </li>
+                    
+                </ul>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1617851289188"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                    <div class="kratos-post-inner-toc">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%87%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">1.1.1.</span> <span class="toc-text">三级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">四级标题</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AE%B5%E8%90%BD"><span class="toc-number">2.</span> <span class="toc-text">段落</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E4%BD%93"><span class="toc-number">3.</span> <span class="toc-text">字体</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%9A%E6%B3%A8"><span class="toc-number">4.</span> <span class="toc-text">脚注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-number">5.</span> <span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">5.1.</span> <span class="toc-text">无序列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">5.2.</span> <span class="toc-text">有序列表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%BA%E5%9D%97"><span class="toc-number">6.</span> <span class="toc-text">区块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">7.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-number">8.</span> <span class="toc-text">链接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E9%93%BE%E6%8E%A5"><span class="toc-number">8.1.</span> <span class="toc-text">高级链接</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E7%89%87"><span class="toc-number">9.</span> <span class="toc-text">图片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-number">10.</span> <span class="toc-text">表格</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="toc-number">11.</span> <span class="toc-text">高级技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E4%BD%BF%E7%94%A8HTML%E5%85%83%E7%B4%A0"><span class="toc-number">11.1.</span> <span class="toc-text">支持使用HTML元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E4%B9%89"><span class="toc-number">11.2.</span> <span class="toc-text">转义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%BC%8F"><span class="toc-number">11.3.</span> <span class="toc-text">公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">11.4.</span> <span class="toc-text">流程图</span></a></li></ol></li></ol>
+                    </div>
+                
+                <hr />
+                <blockquote>
+<p>标题</p>
+<p>字体：粗斜体 删除线 下划线</p>
+<p>列表：有序、无序、任务</p>
+<p>脚注</p>
+<p>图片</p>
+<p>超链接</p>
+<p>表格</p>
+<p>代码块</p>
+<p>区块引用</p>
+</blockquote>
+<h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><p>“标题”使用#来标记，例如一级标题就是： # 一级标题    ## 二级标题</p>
+<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><p>以此类推 </p>
+<p>可使用= 和- 标记标题，该编辑器无</p>
+<hr>
+<h1 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h1><p>在字体的末尾加两个空格然后回车就是段落  </p>
+<p>在段落后面使用一个空喊表示重新开始一个段落</p>
+<p>该编辑器无段落</p>
+<h1 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h1><p>_斜体_：<em>斜体就是用一个个星号或者下划线包住字体</em></p>
+<p>__粗体__：<strong>粗体就是用两个星号或者下划线包住字体</strong></p>
+<p>___粗斜体___：<em><strong>粗斜体就是用三个星号或者下划线包住字体</strong></em></p>
+<p><del>删除字体</del>：<del>删除字体就是用两个波浪线包住字体</del></p>
+<p><u>下划线字体</u>:<u>下划线文本是用HTML的《u》来实现</u></p>
+<p><code>- []</code>就是</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 任务列表</li>
+</ul>
+<hr>
+<p>分割线就是一行用三个减号或者星号，行内不许有其他东西</p>
+<hr>
+<h1 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h1><p>脚注的格式就是用[]包住^文本,例如春晓的作者是<a href="%E5%8F%A4%E4%BB%A3%E8%AF%97%E4%BA%BA">^杜甫</a>。</p>
+<p>该编辑器无脚注。</p>
+<br/>
+
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><p>无序列表使用星号、加号或者减号作为标记，标记后面加一个空格</p>
+<ul>
+<li>无序列表<ul>
+<li>可以嵌套<ul>
+<li>再嵌套</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第二项</li>
+</ul>
+<h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><p>有序列表使用数字并加上.号来表示，后面加上空格</p>
+<ol>
+<li>有序列表</li>
+<li>第二项</li>
+<li>第三项<ol>
+<li>嵌套有序列表</li>
+<li>再嵌套</li>
+</ol>
+<ul>
+<li>嵌套无序列表<ol>
+<li>再嵌套</li>
+<li>有序列表</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>有序列表<ul>
+<li>可以嵌套无序列表</li>
+</ul>
+</li>
+<li>第二项<ul>
+<li>第二个元素</li>
+</ul>
+</li>
+</ol>
+<br/>
+
+<h1 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h1><blockquote>
+<p>区块引用是在段落开始使用&gt;符号即可</p>
+<p>效果是这样子的</p>
+<blockquote>
+<p>区块也是可以嵌套的</p>
+<p>多次嵌套也是可以的</p>
+<blockquote>
+<p>例如这样</p>
+</blockquote>
+<p>区块</p>
+<p>嵌套</p>
+<ol>
+<li><u>还可以在里面嵌套列表和<em><strong>字体</strong></em>格式</u></li>
+</ol>
+<ul>
+<li>挺不错</li>
+</ul>
+</blockquote>
+</blockquote>
+<ul>
+<li>无序列表<blockquote>
+<p>也可以在列表中使用区块<br>就像这样</p>
+</blockquote>
+</li>
+<li>无序列表</li>
+</ul>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><code>用反引号把代码包起来就是这个效果，printf()</code></p>
+<p>反引号就是英文的波浪号`</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">可以用三个`反引号包裹住一段代码就是代码区块了，可以指定语言，也可以不指定</span><br><span class="line">system.out.print(<span class="number">365</span>);</span><br><span class="line">在代码区块里面，Markdown语法不生效</span><br><span class="line">斜体：*斜体*</span><br><span class="line">粗体：**粗体**</span><br><span class="line">粗斜体：***粗斜体***</span><br><span class="line">可把*换做_</span><br><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">* 无序列表</span><br><span class="line">* 无序列表第二项</span><br><span class="line"><span class="number">1.</span> 有序列表</span><br><span class="line"><span class="number">2.</span> 有序列表第二项</span><br><span class="line">&gt; 区块</span><br><span class="line">&gt; 区块</span><br></pre></td></tr></table></figure>
+
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p>可以通过点击蓝色字体而访问一个链接（网页），格式为<a href=""></a>，第一个[显示的字体]，(实际访问的链接)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如这是[百度](www.baidu.com)</span><br></pre></td></tr></table></figure>
+
+<p>例如这是<a href="www.baidu.com">百度</a></p>
+<br/>
+
+<h2 id="高级链接"><a href="#高级链接" class="headerlink" title="高级链接"></a>高级链接</h2><p>这是<a href="www.baidu.com">谷歌</a></p>
+<p><em>该编辑器无高级链接</em></p>
+<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">图片格式：</span><br><span class="line">![图片无法显示时替代的文字](图片链接)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" alt="百度图标"></p>
+<p>如果要指定图片的高度与宽度（大小），可以使用HTML的<img>标签</p>
+<img src="http://static.runoob.com/images/runoob-logo.png" style="zoom:50%" />
+
+<br/>
+
+<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>表格使用<code>|</code>来分割不同的单元格，使用<code>-</code>来分割表头和其他行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">|    表头    |表头|</span><br><span class="line">|----|---|</span><br><span class="line">|单元格|单元格|</span><br><span class="line">|单元格|单元格|</span><br><span class="line"></span><br><span class="line">-:设置右对齐</span><br><span class="line">-：设置左对齐</span><br><span class="line">:-:居中对齐</span><br><span class="line"></span><br><span class="line">| 左对齐 | 右对齐 | 居中对齐 |</span><br><span class="line">| :-----| ----: | :----: |</span><br><span class="line">| 单元格 | 单元格 | 单元格 |</span><br><span class="line">| 单元格 | 单元格 | 单元格 |</span><br></pre></td></tr></table></figure>
+
+<p>|表头|表头 | 表头 ||<br>|:–:|:–:|<br>|单元格|第二个单元|<br>|第三个|第四个|</p>
+<br/>
+
+<h1 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h1><h2 id="支持使用HTML元素"><a href="#支持使用HTML元素" class="headerlink" title="支持使用HTML元素"></a>支持使用HTML元素</h2><p>该编辑器支持较少</p>
+<h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h2><p>需要显示特定的符号，可以使用反斜杠进行转义</p>
+<p><em>斜体</em></p>
+<p>*斜体*</p>
+<h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><p>如果需要插入数学公式，可以使用两个美元$$来实现，但是我不会。</p>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p>流程图太难了，暂时不学，鉴于其实用性，留下<a target="_blank" rel="noopener" href="https://www.runoob.com/markdown/md-advance.html">教程</a>以便后续需要</p>
+
+            </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://orangeh.gitee.io/2021/04/08/Markdown%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://orangeh.gitee.io/2021/04/08/Markdown%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/";
+            const title         = "「Markdown语法笔记」";
+            const excerpt       = `
+标题
+字体：粗斜体 删除线 下划线
+列表：有序、无序、任务
+脚注
+图片
+超链接
+表格
+代码块
+区块引用
+
+标题“标题”使用#来标记，例如一级标题就是： # 一级标题    ## 二级标题
+二级标题三级标题四级标题以此类推 
+可使用=...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/Markdown%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/" rel="tag">Markdown语法笔记</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2021-04-08</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" 首页" href="/2021/04/01/index/">&lt; 上一篇</a>
+                </div>
+                
+                
+            </nav>
+        
+        
+    </article>
+</section>
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/Icon.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">Orange自建博客小站，仅用于笔记与分享</p>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix">
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar"></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%87%E9%A2%98"><span class="toc-text">标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-text">二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-text">三级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-text">四级标题</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AE%B5%E8%90%BD"><span class="toc-text">段落</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E4%BD%93"><span class="toc-text">字体</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%9A%E6%B3%A8"><span class="toc-text">脚注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-text">无序列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-text">有序列表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%BA%E5%9D%97"><span class="toc-text">区块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-text">链接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E9%93%BE%E6%8E%A5"><span class="toc-text">高级链接</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E7%89%87"><span class="toc-text">图片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-text">表格</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="toc-text">高级技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E4%BD%BF%E7%94%A8HTML%E5%85%83%E7%B4%A0"><span class="toc-text">支持使用HTML元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E4%B9%89"><span class="toc-text">转义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%BC%8F"><span class="toc-text">公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">流程图</span></a></li></ol></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Demo/">Demo</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Markdown%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/" style="font-size: 0.6em;">Markdown语法笔记</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 0.6em;">杂谈</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2021/04/08/Markdown%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/"><i class="fa  fa-book"></i> Markdown语法笔记</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/04/01/index/"><i class="fa  fa-book"></i> 首页</a>
+            
+          
+        
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/CandyUnion"><i class="fa fa-telegram"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@Candinya"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/Candinya"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Orange的小站 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by Orange.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
