@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="">
+  <title>STM32技术支持所遇常见问题 | Orange的小站</title>
+  <meta name="author" content="Orange" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="笔记" />
+  
+  <meta name="description" content="Could not open file ..\obj\sys.o: No such file or directory解决办法 3个可能的原因：  **电脑系统用户名有中文字符 ** **MDK安装目录有中文字符或者空格存在 ** 环境变量有问题     仿真器烧写失败 ESP8266&#x2F;2.4G无线模块&#x2F;SIM800C蓝牙模块 通信距离 LORA模块&gt;3000m   芯片被锁死的解决方法 J">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32技术支持所遇常见问题">
+<meta property="og:url" content="https://orangeh.gitee.io/2021/05/26/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Orange的小站">
+<meta property="og:description" content="Could not open file ..\obj\sys.o: No such file or directory解决办法 3个可能的原因：  **电脑系统用户名有中文字符 ** **MDK安装目录有中文字符或者空格存在 ** 环境变量有问题     仿真器烧写失败 ESP8266&#x2F;2.4G无线模块&#x2F;SIM800C蓝牙模块 通信距离 LORA模块&gt;3000m   芯片被锁死的解决方法 J">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://orangeh.gitee.io/null">
+<meta property="article:published_time" content="2021-05-26T08:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-26T08:32:19.690Z">
+<meta property="article:author" content="Orange">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://orangeh.gitee.io/null">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">Orange的小站</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Orange的小站</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">STM32技术支持所遇常见问题</h1>
+                
+                <ul class="kratos-post-meta text-center">
+                    <li><i class="fa fa-calendar"></i> 2021-05-26</li>
+                    <li><i class="fa fa-user"></i> 作者 Orange</li>
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~8.05K
+                        
+                        字
+                    </li>
+                    
+                </ul>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1622017939690"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                    <div class="kratos-post-inner-toc">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Could-not-open-file-obj-sys-o-No-such-file-or-directory%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">Could not open file ..\obj\sys.o: No such file or directory解决办法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BF%E7%9C%9F%E5%99%A8%E7%83%A7%E5%86%99%E5%A4%B1%E8%B4%A5"><span class="toc-number">2.</span> <span class="toc-text">仿真器烧写失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP8266-2-4G%E6%97%A0%E7%BA%BF%E6%A8%A1%E5%9D%97-SIM800C%E8%93%9D%E7%89%99%E6%A8%A1%E5%9D%97-%E9%80%9A%E4%BF%A1%E8%B7%9D%E7%A6%BB"><span class="toc-number">3.</span> <span class="toc-text">ESP8266&#x2F;2.4G无线模块&#x2F;SIM800C蓝牙模块 通信距离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%AF%E7%89%87%E8%A2%AB%E9%94%81%E6%AD%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">芯片被锁死的解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32-%E5%90%84%E7%B3%BB%E5%88%97%E8%8A%AF%E7%89%87%E5%8C%85%E5%9B%BA%E4%BB%B6%E5%8C%85pack"><span class="toc-number">5.</span> <span class="toc-text">STM32 各系列芯片包固件包pack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32-One-or-more-Device-Family-Pack-Devices-are-not-present%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">STM32 One or more Device Family Pack Devices are not present解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MiniPro-%E6%94%AF%E6%8C%81%E7%9A%84%E8%8A%AF%E7%89%87%E7%B1%BB%E5%9E%8B"><span class="toc-number">7.</span> <span class="toc-text">MiniPro 支持的芯片类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Minipro-%E5%A6%82%E4%BD%95%E5%8D%87%E7%BA%A7%E5%9B%BA%E4%BB%B6"><span class="toc-number">8.</span> <span class="toc-text">Minipro 如何升级固件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E5%8F%A3%E5%A6%82%E4%BD%95%E7%83%A7%E5%86%99-%E7%83%A7%E5%BD%95-%E4%B8%8B%E8%BD%BD-%E7%A8%8B%E5%BA%8F"><span class="toc-number">9.</span> <span class="toc-text">串口如何烧写 烧录 下载 程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E7%BA%B9%E6%A8%A1%E5%9D%97-ATK-301-%E6%9D%83%E9%99%90%E9%AA%8C%E8%AF%81"><span class="toc-number">10.</span> <span class="toc-text">指纹模块 ATK-301 权限验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP8266%E5%A6%82%E4%BD%95%E7%83%A7%E5%86%99%E6%9C%BA%E6%99%BA%E4%BA%91GAgent%E5%9B%BA%E4%BB%B6"><span class="toc-number">11.</span> <span class="toc-text">ESP8266如何烧写机智云GAgent固件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DS100%E7%A4%BA%E6%B3%A2%E5%99%A8%E5%BC%80%E6%BA%90%E5%90%97"><span class="toc-number">12.</span> <span class="toc-text">DS100示波器开源吗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%8F%E5%B9%95%E4%B8%8D%E4%BA%AE"><span class="toc-number">13.</span> <span class="toc-text">屏幕不亮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP8266%E7%9A%84FLASH%E5%A4%A7%E5%B0%8F"><span class="toc-number">14.</span> <span class="toc-text">ESP8266的FLASH大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32%E8%8A%AF%E7%89%87%E5%91%BD%E5%90%8D%E5%90%AB%E4%B9%89"><span class="toc-number">15.</span> <span class="toc-text">STM32芯片命名含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CH340%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5"><span class="toc-number">16.</span> <span class="toc-text">CH340驱动安装失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%B7%A5%E7%A8%8B%E5%87%BA%E7%8E%B0%E6%89%BE%E4%B8%8D%E5%88%B0core-cm3-o%E6%96%87%E4%BB%B6"><span class="toc-number">17.</span> <span class="toc-text">编译工程出现找不到core_cm3.o文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%84%E5%83%8F%E5%A4%B4%E6%8E%A8%E8%8D%90"><span class="toc-number">18.</span> <span class="toc-text">摄像头推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%B3%BB%E5%88%97%E5%BC%80%E5%8F%91%E6%9D%BF%E5%A4%96%E5%9B%B4%E7%94%B5%E8%B7%AF%E5%A4%96%E8%AE%BE%E8%8A%AF%E7%89%87%E8%B5%84%E6%BA%90"><span class="toc-number">19.</span> <span class="toc-text">各系列开发板外围电路外设芯片资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MDK-%E5%90%84%E7%89%88%E6%9C%AC%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85pack"><span class="toc-number">20.</span> <span class="toc-text">MDK 各版本软件安装包pack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32%E6%89%93%E5%BC%80%E5%B7%A5%E7%A8%8B%E6%8A%A5%E9%94%99%E2%80%9CLoading-PDSC-Debug-Description-Failed-for-STMicroelectronics-STM32Lxxxxxxx%E2%80%9D"><span class="toc-number">21.</span> <span class="toc-text">STM32打开工程报错“Loading PDSC Debug Description Failed for STMicroelectronics STM32Lxxxxxxx”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DTU%E3%80%81LTE%E3%80%81GPRS%E5%8F%82%E6%95%B0%E5%AF%B9%E6%AF%94"><span class="toc-number">22.</span> <span class="toc-text">DTU、LTE、GPRS参数对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEIL4%E5%B7%A5%E7%A8%8B%E8%BD%AC%E5%88%B0KEIL5-%E6%8A%A5%E9%94%99-CORE-core-cm4-h-169-error-5-cannot-open-source-input-file-%E2%80%9Ccore-cmInstr-h%E2%80%9D-No-such-file-or-directory"><span class="toc-number">23.</span> <span class="toc-text">KEIL4工程转到KEIL5 报错..\CORE\core_cm4.h(169): error:  #5: cannot open source input file “core_cmInstr.h”: No such file or directory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEIL%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90BIN%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6"><span class="toc-number">24.</span> <span class="toc-text">KEIL编译环境如何生成BIN格式文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E7%AB%AF%E6%A0%BC%E5%BC%8F%E5%92%8C%E5%B0%8F%E7%AB%AF%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">25.</span> <span class="toc-text">大端格式和小端格式的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#printf%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0%E4%B8%B2%E5%8F%A3"><span class="toc-number">26.</span> <span class="toc-text">printf重定向到串口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DAP%E4%BB%BF%E7%9C%9F%E5%99%A8%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5"><span class="toc-number">27.</span> <span class="toc-text">DAP仿真器下载失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32%E8%AF%BB%E4%BF%9D%E6%8A%A4%E4%B8%89%E4%B8%AA%E7%AD%89%E7%BA%A7%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">28.</span> <span class="toc-text">STM32读保护三个等级的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32F429%E5%AF%B9RGB%E5%B1%8F%E5%B9%95%E6%94%AF%E6%8C%81%E7%9A%84%E5%88%86%E8%BE%A8%E7%8E%87%E9%99%90%E5%88%B6"><span class="toc-number">29.</span> <span class="toc-text">STM32F429对RGB屏幕支持的分辨率限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FSMC%E5%92%8CFMC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">30.</span> <span class="toc-text">FSMC和FMC的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ROM%E3%80%81RAM%E3%80%81DRAM%E3%80%81SRAM%E3%80%81SDRAM%E5%92%8CFLASH%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">31.</span> <span class="toc-text">ROM、RAM、DRAM、SRAM、SDRAM和FLASH的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%80%E8%9E%BA%E4%BB%AA%E5%92%8C%E5%8A%A0%E9%80%9F%E5%BA%A6%E8%AE%A1MPU6050%E7%9A%84%E5%8D%95%E4%BD%8D%E6%8D%A2%E7%AE%97%E6%96%B9%E6%B3%95"><span class="toc-number">32.</span> <span class="toc-text">陀螺仪和加速度计MPU6050的单位换算方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A2%E7%B4%A2%E8%80%85%E5%87%BA%E7%8E%B0-EX-Flash-error"><span class="toc-number">33.</span> <span class="toc-text">探索者出现 EX Flash error</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ST-LINK-USB-communication-error%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">34.</span> <span class="toc-text">ST-LINK USB communication error解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEIL%E4%BB%BF%E7%9C%9FSTM32F103%E6%97%B6%E5%81%9C%E5%9C%A8Reset-Handler%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8"><span class="toc-number">35.</span> <span class="toc-text">KEIL仿真STM32F103时停在Reset_Handler无法启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Keil-%E4%B8%8B%E8%BD%BD%E7%A8%8B%E5%BA%8F%E6%97%B6%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF%EF%BC%9A-No-Algorithm-found-for"><span class="toc-number">36.</span> <span class="toc-text">Keil  下载程序时出现错误： No Algorithm found for</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UART%E4%B8%8EUSART%E5%8C%BA%E5%88%AB"><span class="toc-number">37.</span> <span class="toc-text">UART与USART区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Symbol-XXX-multiply-defined-by-usart-o-and-main-o-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">38.</span> <span class="toc-text">Symbol XXX multiply defined (by usart.o and main.o).解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#warning-function-declared-implicitly"><span class="toc-number">39.</span> <span class="toc-text">warning: function declared implicitly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32F407%E6%8E%A2%E7%B4%A2%E8%80%85%E7%9A%84%E5%A4%96%E9%83%A8SPI-FLASH-W25Q128-%E6%98%AF16M%E7%9A%84%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%BB%E5%8D%A1%E5%99%A8%E5%AE%9E%E9%AA%8C%E4%B8%BA12M"><span class="toc-number">40.</span> <span class="toc-text">STM32F407探索者的外部SPI FLASH W25Q128 是16M的为什么读卡器实验为12M</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%99HC-05%E3%80%81WIFI%E6%A8%A1%E5%9D%97%E7%AD%89%E5%8F%91AT%E6%8C%87%E4%BB%A4-%E6%97%A0%E5%93%8D%E5%BA%94-%E6%9C%AA%E5%9B%9E%E5%A4%8DOK"><span class="toc-number">41.</span> <span class="toc-text">给HC-05、WIFI模块等发AT指令 无响应 未回复OK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32F1-IO%E5%8F%A3%E9%A9%B1%E5%8A%A8%E7%94%B5%E6%B5%81%E5%A4%9A%E5%A4%A7-%E6%8B%89%E7%94%B5%E6%B5%81%E5%92%8C%E7%81%8C%E7%94%B5%E6%B5%81%E5%A4%9A%E5%A4%A7"><span class="toc-number">42.</span> <span class="toc-text">STM32F1 IO口驱动电流多大 拉电流和灌电流多大</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A2%E7%89%B9%E7%8E%87%E7%9A%84%E4%BC%A0%E8%BE%93%E9%80%9F%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="toc-number">43.</span> <span class="toc-text">波特率的传输速度计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LORA%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BD%8D%E6%9C%BA%E5%8F%82%E6%95%B0%E4%BF%9D%E5%AD%98"><span class="toc-number">44.</span> <span class="toc-text">LORA模块上位机参数保存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IMU901%E5%8D%81%E8%BD%B4%E5%8F%82%E6%95%B0"><span class="toc-number">45.</span> <span class="toc-text">IMU901十轴参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%88%86%E5%88%AB%E5%9E%8B%E5%8F%B7"><span class="toc-number">46.</span> <span class="toc-text">集成电路分别型号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEIL5-%E7%8A%B6%E6%80%81%E6%A0%8F-%E5%9B%BE%E6%A0%87%E9%94%99%E4%B9%B1%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="toc-number">47.</span> <span class="toc-text">KEIL5 状态栏 图标错乱怎么办</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keil5%E7%9A%84%E7%83%A7%E5%86%99%E6%8C%89%E9%92%AE%E6%98%AF%E7%81%B0%E8%89%B2%E7%9A%84"><span class="toc-number">48.</span> <span class="toc-text">keil5的烧写按钮是灰色的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keil%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0Reprogramming-flash"><span class="toc-number">49.</span> <span class="toc-text">keil调试过程中遇到Reprogramming flash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E6%A4%8DSTM32F103C8T6-delay%E5%BB%B6%E6%97%B6%E4%B8%8D%E5%87%86"><span class="toc-number">50.</span> <span class="toc-text">移植STM32F103C8T6 delay延时不准</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#declaration-is-incompatible-with-previous-%E2%80%9CFuncName%E2%80%9D-declared-at-line-XXX"><span class="toc-number">51.</span> <span class="toc-text">declaration is incompatible with previous “FuncName” (declared at line XXX)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SIM800C%E7%9A%84%E8%8A%AF%E7%89%87IC"><span class="toc-number">52.</span> <span class="toc-text">SIM800C的芯片IC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#printf%E6%89%93%E5%8D%B0%E9%81%87%E5%88%B00%E4%BC%9A%E5%81%9C%E6%AD%A2"><span class="toc-number">53.</span> <span class="toc-text">printf打印遇到0会停止</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LORA%E6%A8%A1%E5%9D%97%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%E7%9A%84%E5%BB%B6%E8%BF%9F"><span class="toc-number">54.</span> <span class="toc-text">LORA模块传输数据的延迟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FLASH%E6%89%87%E5%8C%BA%E6%93%A6%E9%99%A4%E6%97%A0%E6%95%88"><span class="toc-number">55.</span> <span class="toc-text">FLASH扇区擦除无效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Error-Flash-Download-failed-Could-not-load-file-%E2%80%98E-Temp-Obj-temp-axf"><span class="toc-number">56.</span> <span class="toc-text">Error: Flash Download failed - Could not load file ‘E:\Temp\Obj\temp.axf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Undefined-symbol"><span class="toc-number">57.</span> <span class="toc-text">Undefined symbol</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E7%A8%8B%E6%96%87%E4%BB%B6%E6%84%9F%E5%8F%B9%E5%8F%B7%EF%BC%8C%E6%96%87%E4%BB%B6%E6%89%BE%E4%B8%8D%E5%88%B0"><span class="toc-number">58.</span> <span class="toc-text">例程文件感叹号，文件找不到</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RTC%E6%97%B6%E9%92%9F%E4%B8%8D%E5%8F%98"><span class="toc-number">59.</span> <span class="toc-text">RTC时钟不变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IIC%E6%AD%BB%E9%94%81%E7%9A%84%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">60.</span> <span class="toc-text">IIC死锁的原因及解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEIL%E8%BF%9B%E8%A1%8C%E8%BD%AF%E4%BB%B6%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%97%B6%E5%80%99%E5%8D%A1%E5%9C%A8LCD%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">61.</span> <span class="toc-text">KEIL进行软件仿真的时候卡在LCD初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEIL%E6%89%93%E5%BC%80%E5%B7%A5%E7%A8%8B%E6%8A%A5%E9%94%99%E2%80%9DLoading-PDSC-Debug-Description-Failed-for-STMicroelectronics-STM32Lxxxxxxx%E2%80%9D"><span class="toc-number">62.</span> <span class="toc-text">KEIL打开工程报错”Loading PDSC Debug Description Failed for STMicroelectronics STM32Lxxxxxxx”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32-%E4%B8%ADCode%E3%80%81RO-data%E3%80%81RW-data%E3%80%81ZI-data%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">63.</span> <span class="toc-text">STM32 中Code、RO-data、RW-data、ZI-data的含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32F103RCT6%E7%A7%BB%E6%A4%8D%E5%88%B0STM32F103C8T6%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-%E7%A7%BB%E6%A4%8D%E6%AD%A5%E9%AA%A4"><span class="toc-number">64.</span> <span class="toc-text">STM32F103RCT6移植到STM32F103C8T6注意事项 移植步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BF%AE%E6%94%B9%E7%BB%BC%E5%90%88%E4%BE%8B%E7%A8%8B%E7%9A%84%E5%9B%BE%E6%A0%87"><span class="toc-number">65.</span> <span class="toc-text">开发板修改综合例程的图标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MPU9250%E5%A6%82%E4%BD%95%E9%A9%B1%E5%8A%A8"><span class="toc-number">66.</span> <span class="toc-text">MPU9250如何驱动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%98%E8%88%B0V2%E8%B5%84%E6%96%99"><span class="toc-number">67.</span> <span class="toc-text">战舰V2资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STLINK%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87stlinkreflash%E8%BD%AC%E6%88%90Jlink"><span class="toc-number">68.</span> <span class="toc-text">STLINK可以通过stlinkreflash转成Jlink</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%97%E6%9E%81%E6%98%9FH750%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5"><span class="toc-number">69.</span> <span class="toc-text">北极星H750下载失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STLINK%E7%83%A7%E5%BD%95%E5%A4%B1%E8%B4%A5%E6%B1%87%E6%80%BB%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">70.</span> <span class="toc-text">STLINK烧录失败汇总及解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flymcu%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">71.</span> <span class="toc-text">flymcu下载失败解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SIM800C%E5%92%8CSIM900A%E5%AF%B9%E6%AF%94"><span class="toc-number">72.</span> <span class="toc-text">SIM800C和SIM900A对比</span></a></li></ol>
+                    </div>
+                
+                <hr />
+                <h2 id="Could-not-open-file-obj-sys-o-No-such-file-or-directory解决办法"><a href="#Could-not-open-file-obj-sys-o-No-such-file-or-directory解决办法" class="headerlink" title="Could not open file ..\obj\sys.o: No such file or directory解决办法"></a>Could not open file ..\obj\sys.o: No such file or directory解决办法</h2><blockquote>
+<p>3个可能的原因：</p>
+<ol>
+<li>**电脑系统用户名有中文字符 **</li>
+<li>**MDK安装目录有中文字符或者空格存在 **</li>
+<li><strong>环境变量有问题</strong></li>
+</ol>
+</blockquote>
+<br/>
+
+<h2 id="仿真器烧写失败"><a href="#仿真器烧写失败" class="headerlink" title="仿真器烧写失败"></a>仿真器烧写失败</h2><p><img src="https://i.loli.net/2021/04/07/ER9v1QDCMLsIocN.png" alt="烧写失败解决图"></p>
+<h2 id="ESP8266-2-4G无线模块-SIM800C蓝牙模块-通信距离"><a href="#ESP8266-2-4G无线模块-SIM800C蓝牙模块-通信距离" class="headerlink" title="ESP8266/2.4G无线模块/SIM800C蓝牙模块 通信距离"></a>ESP8266/2.4G无线模块/SIM800C蓝牙模块 通信距离</h2><p><img src="https://i.loli.net/2021/04/09/GdYKCqNDwfvVhr2.jpg" alt="通信距离"></p>
+<p>LORA模块&gt;3000m</p>
+<br/>
+
+<h2 id="芯片被锁死的解决方法"><a href="#芯片被锁死的解决方法" class="headerlink" title="芯片被锁死的解决方法"></a>芯片被锁死的解决方法</h2><ul>
+<li>JLINK方法：<a target="_blank" rel="noopener" href="http://www.openedv.com/thread-80888-1-1.html">http://www.openedv.com/thread-80888-1-1.html</a></li>
+<li>STLINK方法：<a target="_blank" rel="noopener" href="http://www.openedv.com/thread-80866-1-1.html">http://www.openedv.com/thread-80866-1-1.html</a></li>
+</ul>
+<br/>
+
+<h2 id="STM32-各系列芯片包固件包pack"><a href="#STM32-各系列芯片包固件包pack" class="headerlink" title="STM32 各系列芯片包固件包pack"></a>STM32 各系列芯片包固件包pack</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.openedv.com/forum.php?mod=viewthread&amp;tid=295079&amp;highlight=PACK">http://www.openedv.com/forum.php?mod=viewthread&amp;tid=295079&amp;highlight=PACK</a></li>
+</ul>
+<br/>
+
+<h2 id="STM32-One-or-more-Device-Family-Pack-Devices-are-not-present解决方法"><a href="#STM32-One-or-more-Device-Family-Pack-Devices-are-not-present解决方法" class="headerlink" title="STM32 One or more Device Family Pack Devices are not present解决方法"></a>STM32 One or more Device Family Pack Devices are not present解决方法</h2><blockquote>
+<p>没有安装固件包，去<a target="_blank" rel="noopener" href="http://www.openedv.com/forum.php?mod=viewthread&amp;tid=295079&amp;highlight=PACK%E4%B8%8B%E8%BD%BD%E5%B9%B6%E5%AE%89%E8%A3%85">http://www.openedv.com/forum.php?mod=viewthread&amp;tid=295079&amp;highlight=PACK下载并安装</a></p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/04/09/XuHzAtVwpsocZPk.jpg" alt="缺少SDK"></p>
+<h2 id="MiniPro-支持的芯片类型"><a href="#MiniPro-支持的芯片类型" class="headerlink" title="MiniPro 支持的芯片类型"></a>MiniPro 支持的芯片类型</h2><blockquote>
+<p>如果表格里有的类型，上位机没有，请更新上位机及烧录器至最新版本</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/04/09/2fxL1yIa7cu8kbi.png" alt="Minipro"></p>
+<h2 id="Minipro-如何升级固件"><a href="#Minipro-如何升级固件" class="headerlink" title="Minipro 如何升级固件"></a>Minipro 如何升级固件</h2><p><img src="https://i.loli.net/2021/04/09/gz2OusNMwtQelfG.png" alt="升级固件"></p>
+<h2 id="串口如何烧写-烧录-下载-程序"><a href="#串口如何烧写-烧录-下载-程序" class="headerlink" title="串口如何烧写 烧录 下载 程序"></a>串口如何烧写 烧录 下载 程序</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.openedv.com/forum.php?mod=viewthread&amp;tid=279348&amp;extra">http://www.openedv.com/forum.php?mod=viewthread&amp;tid=279348&amp;extra</a></li>
+</ul>
+<br/>
+
+<h2 id="指纹模块-ATK-301-权限验证"><a href="#指纹模块-ATK-301-权限验证" class="headerlink" title="指纹模块 ATK-301 权限验证"></a>指纹模块 ATK-301 权限验证</h2><blockquote>
+<p>模块本身并无区分权限或者分类存储等功能，但可以通过程序判断指纹的ID来验证权限。</p>
+</blockquote>
+<br/>
+
+<h2 id="ESP8266如何烧写机智云GAgent固件"><a href="#ESP8266如何烧写机智云GAgent固件" class="headerlink" title="ESP8266如何烧写机智云GAgent固件"></a>ESP8266如何烧写机智云GAgent固件</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.openedv.com/forum.php?mod=viewthread&amp;tid=310526&amp;highlight=GAgent">http://www.openedv.com/forum.php?mod=viewthread&amp;tid=310526&amp;highlight=GAgent</a></li>
+</ul>
+<br/>
+
+<h2 id="DS100示波器开源吗"><a href="#DS100示波器开源吗" class="headerlink" title="DS100示波器开源吗"></a>DS100示波器开源吗</h2><blockquote>
+<p>不开源，网上有拆机分享</p>
+</blockquote>
+<br/>
+
+<h2 id="屏幕不亮"><a href="#屏幕不亮" class="headerlink" title="屏幕不亮"></a>屏幕不亮</h2><blockquote>
+<p>例程触摸屏实验之前的程序屏幕都是不亮的。</p>
+<p>烧写触摸屏及以后的程序确认是否硬件问题。</p>
+</blockquote>
+<br/>
+
+<h2 id="ESP8266的FLASH大小"><a href="#ESP8266的FLASH大小" class="headerlink" title="ESP8266的FLASH大小"></a>ESP8266的FLASH大小</h2><blockquote>
+<p>FLASH大小为4M字节</p>
+</blockquote>
+<br/>
+
+<h2 id="STM32芯片命名含义"><a href="#STM32芯片命名含义" class="headerlink" title="STM32芯片命名含义"></a>STM32芯片命名含义</h2><blockquote>
+<p>举例:STM32  F  103  C  8  T  6<br>“F”那一位指的是产品类型，现在似乎只有通用型即”F”</p>
+<p>“103”那位指的是产品子系列,101= 基本型,102 = USB基本型、USB 2.0全速设备，103 = 增强型，105或107 = 互联型</p>
+<p>“C”那位指的是引脚数目，T=36脚，C=48脚，R=64脚，V=100脚，Z = 144脚</p>
+<p>“8”那位指的是FLASH的大小，4=16K，6=32K，8=64K，B=128K，C=256K，D=384K，E=512K</p>
+<p>“T”那位指的是封装方式，H=BGA,T=LQFP,U=VFQFPN,Y=WLCSP64</p>
+<p>“6”那位指的是温度范围，6=-40<del>85摄氏度，7=-40</del>105摄氏度</p>
+</blockquote>
+<br/>
+
+<h2 id="CH340驱动安装失败"><a href="#CH340驱动安装失败" class="headerlink" title="CH340驱动安装失败"></a>CH340驱动安装失败</h2><blockquote>
+<p>CH340安装失败：<br>1.使用USB线接上开发板的USB_232接口，开发板上电，再去安装CH340驱动看看<br>2.安装这个<a target="_blank" rel="noopener" href="http://www.wch.cn/download/CH341SER_EXE.html">http://www.wch.cn/download/CH341SER_EXE.html</a><br>3.上一步不行的话使用驱动精灵去安装<br>4.2不行的话禁用驱动数字签名，<br>(WIN10)<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/624e74594dbc8d34e8ba5aa6.html">https://jingyan.baidu.com/article/624e74594dbc8d34e8ba5aa6.html</a><br>(WIN7)<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/3d69c5518ca3fdf0cf02d7c9.html">https://jingyan.baidu.com/article/3d69c5518ca3fdf0cf02d7c9.html</a><br>再去安装，到这一步一般就可以了。</p>
+</blockquote>
+<br/>
+
+<h2 id="编译工程出现找不到core-cm3-o文件"><a href="#编译工程出现找不到core-cm3-o文件" class="headerlink" title="编译工程出现找不到core_cm3.o文件"></a>编译工程出现找不到core_cm3.o文件</h2><blockquote>
+<p>4个可能的原因：<br>1.电脑系统用户名有中文字符,尝试修改电脑用户名的方法：<a target="_blank" rel="noopener" href="http://www.openedv.com/forum.php?mod=viewthread&amp;tid=315113&amp;highlight=%EF%BF%BD%C3%BB%EF%BF%BD%EF%BF%BD%EF%BF%BD">http://www.openedv.com/forum.php?mod=viewthread&amp;tid=315113&amp;highlight=%D3%C3%BB%A7%C3%FB</a><br>2.MDK安装目录有中文字符或者空格存在<br>3.环境变量有问题，可以试试修改环境变量的方法：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1YPc5g87Trf8M8AhqMIkgOQ%EF%BC%8C">https://pan.baidu.com/s/1YPc5g87Trf8M8AhqMIkgOQ，</a><br>4.第三步不行的话在第3步的基础上参考下面的方法设置<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/lnwechag/article/details/50760001">https://blog.csdn.net/lnwechag/article/details/50760001</a></p>
+</blockquote>
+<br/>
+
+<h2 id="摄像头推荐"><a href="#摄像头推荐" class="headerlink" title="摄像头推荐"></a>摄像头推荐</h2><p><img src="https://i.loli.net/2021/04/13/UcYpO58qbNlMGxB.png" alt="摄像头"></p>
+<br/>
+
+<h2 id="各系列开发板外围电路外设芯片资源"><a href="#各系列开发板外围电路外设芯片资源" class="headerlink" title="各系列开发板外围电路外设芯片资源"></a>各系列开发板外围电路外设芯片资源</h2><p><img src="https://i.loli.net/2021/04/13/X4ZuK1ycnzpQtYW.png" alt="芯片资源"></p>
+<h2 id="MDK-各版本软件安装包pack"><a href="#MDK-各版本软件安装包pack" class="headerlink" title="MDK 各版本软件安装包pack"></a>MDK 各版本软件安装包pack</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Simon223/article/details/105090189">https://blog.csdn.net/Simon223/article/details/105090189</a></p>
+<br/>
+
+<h2 id="STM32打开工程报错“Loading-PDSC-Debug-Description-Failed-for-STMicroelectronics-STM32Lxxxxxxx”"><a href="#STM32打开工程报错“Loading-PDSC-Debug-Description-Failed-for-STMicroelectronics-STM32Lxxxxxxx”" class="headerlink" title="STM32打开工程报错“Loading PDSC Debug Description Failed for STMicroelectronics STM32Lxxxxxxx”"></a>STM32打开工程报错“Loading PDSC Debug Description Failed for STMicroelectronics STM32Lxxxxxxx”</h2><blockquote>
+<ul>
+<li>根本原因是keil版本比pack版本旧，版本不兼容。解决办法如下：</li>
+<li>方法一：更新keil版本</li>
+<li>方法二：参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40779546/article/details/81940587%E4%BF%AE%E6%94%B9keil%E6%96%87%E4%BB%B6">https://blog.csdn.net/weixin_40779546/article/details/81940587修改keil文件</a></li>
+</ul>
+</blockquote>
+<br/>
+
+<h2 id="DTU、LTE、GPRS参数对比"><a href="#DTU、LTE、GPRS参数对比" class="headerlink" title="DTU、LTE、GPRS参数对比"></a>DTU、LTE、GPRS参数对比</h2><p><img src="https://i.loli.net/2021/04/14/xpDbJXPhdycrozA.png" alt="DTU、LTE、GPRS"></p>
+<br/>
+
+<h2 id="KEIL4工程转到KEIL5-报错-CORE-core-cm4-h-169-error-5-cannot-open-source-input-file-“core-cmInstr-h”-No-such-file-or-directory"><a href="#KEIL4工程转到KEIL5-报错-CORE-core-cm4-h-169-error-5-cannot-open-source-input-file-“core-cmInstr-h”-No-such-file-or-directory" class="headerlink" title="KEIL4工程转到KEIL5 报错..\CORE\core_cm4.h(169): error:  #5: cannot open source input file “core_cmInstr.h”: No such file or directory"></a>KEIL4工程转到KEIL5 报错..\CORE\core_cm4.h(169): error:  #5: cannot open source input file “core_cmInstr.h”: No such file or directory</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010091103/article/details/74937209">https://blog.csdn.net/u010091103/article/details/74937209</a></p>
+<br/>
+
+<h2 id="KEIL编译环境如何生成BIN格式文件"><a href="#KEIL编译环境如何生成BIN格式文件" class="headerlink" title="KEIL编译环境如何生成BIN格式文件"></a>KEIL编译环境如何生成BIN格式文件</h2><blockquote>
+<p><code>fromelf --bin -o &quot;$L@L.bin&quot; &quot;#L&quot;</code></p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/04/17/axOs4y6WKYjSwDH.png" alt="生成BIN文件"></p>
+<h2 id="大端格式和小端格式的区别"><a href="#大端格式和小端格式的区别" class="headerlink" title="大端格式和小端格式的区别"></a>大端格式和小端格式的区别</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuyuegb2312/archive/2013/06/08/3126510.html">https://www.cnblogs.com/wuyuegb2312/archive/2013/06/08/3126510.html</a></li>
+</ul>
+<br/>
+
+<h2 id="printf重定向到串口"><a href="#printf重定向到串口" class="headerlink" title="printf重定向到串口"></a>printf重定向到串口</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29344757/article/details/75363639">https://blog.csdn.net/qq_29344757/article/details/75363639</a></li>
+</ul>
+<br/>
+
+<h2 id="DAP仿真器下载失败"><a href="#DAP仿真器下载失败" class="headerlink" title="DAP仿真器下载失败"></a>DAP仿真器下载失败</h2><p><img src="https://i.loli.net/2021/04/20/rRWESiPonTCUDNc.png" alt="DAP"></p>
+<br/>
+
+<h2 id="STM32读保护三个等级的区别"><a href="#STM32读保护三个等级的区别" class="headerlink" title="STM32读保护三个等级的区别"></a>STM32读保护三个等级的区别</h2><blockquote>
+<p>1、Level 0（无保护）</p>
+<p>  默认设置，所有读写和擦除操作都可以正常支持。</p>
+<p>2、Level 1 （Flash连接保护）</p>
+<p>（1）可以防止连接调试器时读取Flash内容，或者RAM中存有恶意获取代码，也是禁止的。</p>
+<p>        因此只要调试器连接芯片，或者从内部RAM启动运行代码，都是禁止访问内部Flash的.</p>
+<p>（2）如果没有检测到从内部RAM启动，从系统bootloader启动且没有连接调试器，对用户Flash的读写和擦除操作都是允许的，并且其它安全存储区也是可以访问的。否则是禁止访问的，一旦检测到对Flash的读请求，将产生总线错误。</p>
+<p>（3）如果将Level 1切换到Level 0时，用户Flash区和安全区域将被删除。</p>
+<p>3、Level 2（设备保护和自举保护）</p>
+<p>（1）所有调试特性被关系。<br>（2）禁止从RAM启动。<br>（3）除了选项字节里面的SWAP位可以配置，其它位都无法再更改。<br>（4）禁止了调试功能，且禁止了从RAM和系统bootloader启动，用户Flash区是可以执行读写和擦除操作的，访问其它安全存储区也是可以的。</p>
+<p>特别注意：Level2修改是永久性的，一旦配置为Level2将不再支持被修改。<br>————————————————<br>版权声明：本文为CSDN博主「Simon223」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Simon223/article/details/104794705">https://blog.csdn.net/Simon223/article/details/104794705</a></p>
+</blockquote>
+<br/>
+
+<h2 id="STM32F429对RGB屏幕支持的分辨率限制"><a href="#STM32F429对RGB屏幕支持的分辨率限制" class="headerlink" title="STM32F429对RGB屏幕支持的分辨率限制"></a>STM32F429对RGB屏幕支持的分辨率限制</h2><blockquote>
+<p>F429的LTDC最大支持1024*768分辨率的</p>
+</blockquote>
+<br/>
+
+<h2 id="FSMC和FMC的区别"><a href="#FSMC和FMC的区别" class="headerlink" title="FSMC和FMC的区别"></a>FSMC和FMC的区别</h2><blockquote>
+<p>FMC比FSMC多支持一个SDRAM</p>
+</blockquote>
+<br/>
+
+<h2 id="ROM、RAM、DRAM、SRAM、SDRAM和FLASH的区别"><a href="#ROM、RAM、DRAM、SRAM、SDRAM和FLASH的区别" class="headerlink" title="ROM、RAM、DRAM、SRAM、SDRAM和FLASH的区别"></a>ROM、RAM、DRAM、SRAM、SDRAM和FLASH的区别</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/linuxalienyan/article/details/75200219">https://blog.csdn.net/linuxalienyan/article/details/75200219</a></li>
+</ul>
+<br/>
+
+<h2 id="陀螺仪和加速度计MPU6050的单位换算方法"><a href="#陀螺仪和加速度计MPU6050的单位换算方法" class="headerlink" title="陀螺仪和加速度计MPU6050的单位换算方法"></a>陀螺仪和加速度计MPU6050的单位换算方法</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/uestcman/p/9433871.html">https://www.cnblogs.com/uestcman/p/9433871.html</a></li>
+</ul>
+</blockquote>
+<br/>
+
+<h2 id="探索者出现-EX-Flash-error"><a href="#探索者出现-EX-Flash-error" class="headerlink" title="探索者出现 EX Flash error"></a>探索者出现 EX Flash error</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://openedv.com/posts/list/54412.htm">http://openedv.com/posts/list/54412.htm</a></li>
+</ul>
+</blockquote>
+<br/>
+
+<h2 id="ST-LINK-USB-communication-error解决方法"><a href="#ST-LINK-USB-communication-error解决方法" class="headerlink" title="ST-LINK USB communication error解决方法"></a>ST-LINK USB communication error解决方法</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ea3f6b4e16ef">https://www.jianshu.com/p/ea3f6b4e16ef</a></li>
+</ul>
+</blockquote>
+<br/>
+
+<h2 id="KEIL仿真STM32F103时停在Reset-Handler无法启动"><a href="#KEIL仿真STM32F103时停在Reset-Handler无法启动" class="headerlink" title="KEIL仿真STM32F103时停在Reset_Handler无法启动"></a>KEIL仿真STM32F103时停在Reset_Handler无法启动</h2><blockquote>
+<p>断点打多了，超过4个了。删掉几个就可以了。</p>
+</blockquote>
+<br/>
+
+<h2 id="Keil-下载程序时出现错误：-No-Algorithm-found-for"><a href="#Keil-下载程序时出现错误：-No-Algorithm-found-for" class="headerlink" title="Keil  下载程序时出现错误： No Algorithm found for"></a>Keil  下载程序时出现错误： No Algorithm found for</h2><p>仿真器下载页面选择错下载芯片的FLASH了</p>
+<br/>
+
+<h2 id="UART与USART区别"><a href="#UART与USART区别" class="headerlink" title="UART与USART区别"></a>UART与USART区别</h2><blockquote>
+<p>USART：通用同步和异步收发器<br>UART：通用异步收发器<br>当进行异步通信时,这两者是没有区别的。区别在于USART比UART多了同步通信功能。<br>这个同步通信功能可以把USART当做SPI来用，比如用USART来驱动SPI设备。</p>
+<p>同步是指：发送方发出数据后，等接收方发回响应以后才发下一个数据包的通讯方式。<br>异步是指：发送方发出数据后，不等接收方发回响应，接着发送下个数据包的通讯方式。</p>
+<p>同步是阻塞模式，异步是非阻塞模式。</p>
+<p>其中SPI IIC为同步通信  UART为异步通信, usart为同步&amp;异步通信。</p>
+<p>单工、半双工、全双工<br> 单工数据传输只支持数据在一个方向上传输；<br> 半双工数据传输允许数据在两个方向上传输，但是，在某一时刻，只允许数据在一个方向上传输，它实际上是一种切换方向的单工通信；<br> 全双工数据通信允许数据同时在两个方向上传输，因此，全双工通信是两个单工通信方式的结合，它要求发送设备和接收设备都有独立的接收和发送能力。<br>I2C是半双工，SPI的全双工，uart是全双工。</p>
+<p>具体参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/seashine_yan/article/details/71192283">https://blog.csdn.net/seashine_yan/article/details/71192283</a></p>
+</blockquote>
+<br/>
+
+<h2 id="Symbol-XXX-multiply-defined-by-usart-o-and-main-o-解决方法"><a href="#Symbol-XXX-multiply-defined-by-usart-o-and-main-o-解决方法" class="headerlink" title="Symbol XXX multiply defined (by usart.o and main.o).解决方法"></a>Symbol XXX multiply defined (by usart.o and main.o).解决方法</h2><blockquote>
+<p>在括号内提示的两个.C文件里重复定义了</p>
+</blockquote>
+<br/>
+
+<h2 id="warning-function-declared-implicitly"><a href="#warning-function-declared-implicitly" class="headerlink" title="warning: function declared implicitly"></a>warning: function declared implicitly</h2><blockquote>
+<p>函数隐式声明了，可能是没有把头文件include进来</p>
+</blockquote>
+<br/>
+
+<h2 id="STM32F407探索者的外部SPI-FLASH-W25Q128-是16M的为什么读卡器实验为12M"><a href="#STM32F407探索者的外部SPI-FLASH-W25Q128-是16M的为什么读卡器实验为12M" class="headerlink" title="STM32F407探索者的外部SPI FLASH W25Q128 是16M的为什么读卡器实验为12M"></a>STM32F407探索者的外部SPI FLASH W25Q128 是16M的为什么读卡器实验为12M</h2><blockquote>
+<p>因为我们把W25Q128 16M字节划分了12M给文件系统，另外的内存用来存储字库图片等文件</p>
+</blockquote>
+<br/>
+
+<h2 id="给HC-05、WIFI模块等发AT指令-无响应-未回复OK"><a href="#给HC-05、WIFI模块等发AT指令-无响应-未回复OK" class="headerlink" title="给HC-05、WIFI模块等发AT指令 无响应 未回复OK"></a>给HC-05、WIFI模块等发AT指令 无响应 未回复OK</h2><blockquote>
+<ol>
+<li>不要模块连接板子，串口调试助手给板子发指令</li>
+<li>RX和TX接反了</li>
+<li>未进入AT配置模式</li>
+<li>串口调试助手没有勾选新行</li>
+<li>串口波特率不对</li>
+<li>模块固件出问题了，重新烧录固件</li>
+</ol>
+</blockquote>
+<br/>
+
+<h2 id="STM32F1-IO口驱动电流多大-拉电流和灌电流多大"><a href="#STM32F1-IO口驱动电流多大-拉电流和灌电流多大" class="headerlink" title="STM32F1 IO口驱动电流多大 拉电流和灌电流多大"></a>STM32F1 IO口驱动电流多大 拉电流和灌电流多大</h2><blockquote>
+<p>拉电流为25ma，灌电流150ma。</p>
+<ul>
+<li><p>拉电流就是IO口输出的电流，所有拉电流不能超过25ma。</p>
+</li>
+<li><p>灌电流就是IO口输入的电流，所有灌电流不能超过150ma。</p>
+</li>
+</ul>
+</blockquote>
+<br/>
+
+<h2 id="波特率的传输速度计算"><a href="#波特率的传输速度计算" class="headerlink" title="波特率的传输速度计算"></a>波特率的传输速度计算</h2><blockquote>
+<p>速率=波特率/10/1024（k/s）</p>
+<p>波特率/10是因为一个字节八位，一个停止位一个数据位</p>
+</blockquote>
+<br/>
+
+<h2 id="LORA模块上位机参数保存"><a href="#LORA模块上位机参数保存" class="headerlink" title="LORA模块上位机参数保存"></a>LORA模块上位机参数保存</h2><blockquote>
+<p>LORA模块的MD0接高电平进入配置模式，保存配置后，把MD0引脚悬空再断电上电才保存成功。</p>
+</blockquote>
+<br/>
+
+<h2 id="IMU901十轴参数"><a href="#IMU901十轴参数" class="headerlink" title="IMU901十轴参数"></a>IMU901十轴参数</h2><blockquote>
+<p>十轴的芯片：气压计：SPL06，磁力计：ak8963c，陀螺仪：icm20602，mcu: gd32e230</p>
+</blockquote>
+<h2 id="集成电路分别型号"><a href="#集成电路分别型号" class="headerlink" title="集成电路分别型号"></a>集成电路分别型号</h2><p><img src="https://i.loli.net/2021/05/10/WRfH8huPL4X9Izb.png" alt="集成IC1"></p>
+<p><img src="https://i.loli.net/2021/05/10/LPstHl5ynufwWkQ.png" alt="集成IC2"></p>
+<p><img src="https://i.loli.net/2021/05/10/E9xlejXkpaZzgSH.png" alt="集成IC3"></p>
+<p><img src="https://i.loli.net/2021/05/10/je291uQ7JBoaktO.png" alt="集成IC4"></p>
+<p><img src="https://i.loli.net/2021/05/10/efzWqyTs3hrmo1H.png" alt="集成IC5"></p>
+<p><img src="https://i.loli.net/2021/05/10/XsZqHYxNgd5lQ3I.png" alt="集成IC6"></p>
+<p><img src="https://i.loli.net/2021/05/10/nBoy2IJOb4pUjHP.png" alt="集成IC7"></p>
+<br/>
+
+<p><img src="https://i.loli.net/2021/05/10/miNawGeKTboDgPd.png" alt="集成IC"></p>
+<p><img src="https://i.loli.net/2021/05/10/UhNEzg9MsWiqK8c.png" alt="集成IC8"></p>
+<br/>
+
+<h2 id="KEIL5-状态栏-图标错乱怎么办"><a href="#KEIL5-状态栏-图标错乱怎么办" class="headerlink" title="KEIL5 状态栏 图标错乱怎么办"></a>KEIL5 状态栏 图标错乱怎么办</h2><blockquote>
+<ol>
+<li>点击“Window-&gt;  Reset View to Default”</li>
+<li>弹出多选框：Reset： Reinitialize uvision windows with default layoutRestart： close project and restart uvision with default layout即为重置：使用默认布局重新初始化uvision窗口重置并重启：关闭项目并使用默认布局重新启动uvision窗口此处选“Reset”“重置”即可。</li>
+</ol>
+</blockquote>
+<br/>
+
+<h2 id="keil5的烧写按钮是灰色的"><a href="#keil5的烧写按钮是灰色的" class="headerlink" title="keil5的烧写按钮是灰色的"></a>keil5的烧写按钮是灰色的</h2><blockquote>
+<p>仿真器配置错误</p>
+</blockquote>
+<br/>
+
+<h2 id="keil调试过程中遇到Reprogramming-flash"><a href="#keil调试过程中遇到Reprogramming-flash" class="headerlink" title="keil调试过程中遇到Reprogramming flash"></a>keil调试过程中遇到Reprogramming flash</h2><p><img src="https://i.loli.net/2021/05/11/SVoiy4DaNQEwJTH.png" alt="勾选"></p>
+<br/>
+
+<h2 id="移植STM32F103C8T6-delay延时不准"><a href="#移植STM32F103C8T6-delay延时不准" class="headerlink" title="移植STM32F103C8T6 delay延时不准"></a>移植STM32F103C8T6 delay延时不准</h2><blockquote>
+<p>1、因为stm32f103c8t6的启动文件没有调用SystemInit()，所以手动调用就行了</p>
+<p>2、查看启动文件<code>IMPORT  SystemInit</code>  <code>LDR     R0, =SystemInit </code>  <code>BLX     R0</code>这三句代码是否注释了，取消注释即可</p>
+<p>3、查看system_stm32f10x.c 有没有定义<code>VECT_TAB_SRAM</code>这个宏，取消定义</p>
+</blockquote>
+<br/>
+
+<h2 id="declaration-is-incompatible-with-previous-“FuncName”-declared-at-line-XXX"><a href="#declaration-is-incompatible-with-previous-“FuncName”-declared-at-line-XXX" class="headerlink" title="declaration is incompatible with previous “FuncName” (declared at line XXX)"></a>declaration is incompatible with previous “FuncName” (declared at line XXX)</h2><blockquote>
+<p>将该函数放在调用本函数的函数之前即可。</p>
+</blockquote>
+<br/>
+
+<h2 id="SIM800C的芯片IC"><a href="#SIM800C的芯片IC" class="headerlink" title="SIM800C的芯片IC"></a>SIM800C的芯片IC</h2><blockquote>
+<p>1418B02SIM800C32_BT </p>
+</blockquote>
+<br/>
+
+<h2 id="printf打印遇到0会停止"><a href="#printf打印遇到0会停止" class="headerlink" title="printf打印遇到0会停止"></a>printf打印遇到0会停止</h2><blockquote>
+<p>因为\0是字符串结束标志，而\0的ASCII码值就是0，也就是null</p>
+</blockquote>
+<br/>
+
+<h2 id="LORA模块传输数据的延迟"><a href="#LORA模块传输数据的延迟" class="headerlink" title="LORA模块传输数据的延迟"></a>LORA模块传输数据的延迟</h2><blockquote>
+<p>3000米延时2.4秒</p>
+</blockquote>
+<br/>
+
+<h2 id="FLASH扇区擦除无效"><a href="#FLASH扇区擦除无效" class="headerlink" title="FLASH扇区擦除无效"></a>FLASH扇区擦除无效</h2><blockquote>
+<p>对FLASH进行擦除或者写操作时需要禁用数据缓存和解锁，可以参考FLASH模拟EEPROM的写入函数</p>
+</blockquote>
+<h2 id="Error-Flash-Download-failed-Could-not-load-file-‘E-Temp-Obj-temp-axf"><a href="#Error-Flash-Download-failed-Could-not-load-file-‘E-Temp-Obj-temp-axf" class="headerlink" title="Error: Flash Download failed - Could not load file ‘E:\Temp\Obj\temp.axf"></a>Error: Flash Download failed - Could not load file ‘E:\Temp\Obj\temp.axf</h2><blockquote>
+<ul>
+<li>编译错误</li>
+<li>没有破解MDK</li>
+<li>重新覆盖安装KEIL</li>
+</ul>
+</blockquote>
+<br/>
+
+<h2 id="Undefined-symbol"><a href="#Undefined-symbol" class="headerlink" title="Undefined symbol"></a>Undefined symbol</h2><blockquote>
+<p>.c文件没有添加到工程里面</p>
+</blockquote>
+<br/>
+
+<h2 id="例程文件感叹号，文件找不到"><a href="#例程文件感叹号，文件找不到" class="headerlink" title="例程文件感叹号，文件找不到"></a>例程文件感叹号，文件找不到</h2><blockquote>
+<p>目录太深了，把工程文件放到桌面上</p>
+</blockquote>
+<br/>
+
+<h2 id="RTC时钟不变"><a href="#RTC时钟不变" class="headerlink" title="RTC时钟不变"></a>RTC时钟不变</h2><blockquote>
+<p>获取时间不准，需要日期也获取，否则时间寄存器不会更新</p>
+</blockquote>
+<br/>
+
+<h2 id="IIC死锁的原因及解决方法"><a href="#IIC死锁的原因及解决方法" class="headerlink" title="IIC死锁的原因及解决方法"></a>IIC死锁的原因及解决方法</h2><blockquote>
+<p>当主设备SCL八次脉冲后，将SCL拉低等待从设备返回应答信号，从设备发出应答信号SDA拉低，此时如果主设备异常复位了，SCL被主设备拉高了，此时从设备还在发出应答信号，等待主设备将SCL拉低。<strong>所以主设备在等待IIC总线空闲，而从设备在等待主设备拉低SCL，因此进入了死锁</strong></p>
+<p>解决方法：参考 <a target="_blank" rel="noopener" href="http://blog.chinaaet.com/jihceng0622/p/40223">http://blog.chinaaet.com/jihceng0622/p/40223</a></p>
+</blockquote>
+<br/>
+
+<h2 id="KEIL进行软件仿真的时候卡在LCD初始化"><a href="#KEIL进行软件仿真的时候卡在LCD初始化" class="headerlink" title="KEIL进行软件仿真的时候卡在LCD初始化"></a>KEIL进行软件仿真的时候卡在LCD初始化</h2><blockquote>
+<p>因为没有相应的内存映射，可能的原因是由于软件仿真没有分配相应的映射地址。</p>
+<p>可以再keil软件的仿真状态下面点击菜单栏的Debug-》Memory Map，如下图添加缺少的内存映射值范围，如0x0000000c在0x00000000-0x0000000f之间。如下图：</p>
+<p>可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/bobbat/article/details/41059721">https://blog.csdn.net/bobbat/article/details/41059721</a></p>
+</blockquote>
+<br/>
+
+<h2 id="KEIL打开工程报错”Loading-PDSC-Debug-Description-Failed-for-STMicroelectronics-STM32Lxxxxxxx”"><a href="#KEIL打开工程报错”Loading-PDSC-Debug-Description-Failed-for-STMicroelectronics-STM32Lxxxxxxx”" class="headerlink" title="KEIL打开工程报错”Loading PDSC Debug Description Failed for STMicroelectronics STM32Lxxxxxxx”"></a>KEIL打开工程报错”Loading PDSC Debug Description Failed for STMicroelectronics STM32Lxxxxxxx”</h2><blockquote>
+<p>这是因为keil版本比pack包版本旧，不兼容，更新keil或者把pack包换成旧的</p>
+</blockquote>
+<br/>
+
+<h2 id="STM32-中Code、RO-data、RW-data、ZI-data的含义"><a href="#STM32-中Code、RO-data、RW-data、ZI-data的含义" class="headerlink" title="STM32 中Code、RO-data、RW-data、ZI-data的含义"></a>STM32 中Code、RO-data、RW-data、ZI-data的含义</h2><blockquote>
+<p>Code代表执行的代码，程序中所有的函数都位于此处。</p>
+<p>RO-data代表只读数据，程序中所定义的全局常量数据和字符串都位于此处。</p>
+<p>RW-data代表已初始化的读写数据，程序中定义并且初始化的全局变量和静态变量位于此处。</p>
+<p>ZI-data 代表未初始化的读写数据，程序中定义了但没有初始化的全局变量和静态变量位于此处。</p>
+<p><u>ROM（Flash） Size = Code＋RO-Data＋RW-Data；</u></p>
+<p><u>RAM Size = RW-Data＋ZI-Data；</u></p>
+<p><strong>为什么RW-Data既占FLASH又占ROM呢，因为RW的数据不能无中生有，先把变量的初值保存到了FLASH，等程序运行时再把初值从FLASH赋值到RAM中。</strong></p>
+</blockquote>
+<h2 id="STM32F103RCT6移植到STM32F103C8T6注意事项-移植步骤"><a href="#STM32F103RCT6移植到STM32F103C8T6注意事项-移植步骤" class="headerlink" title="STM32F103RCT6移植到STM32F103C8T6注意事项 移植步骤"></a>STM32F103RCT6移植到STM32F103C8T6注意事项 移植步骤</h2><blockquote>
+<p>参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/vonly/p/7411169.html">https://www.cnblogs.com/vonly/p/7411169.html</a></p>
+</blockquote>
+<br/>
+
+<h2 id="开发板修改综合例程的图标"><a href="#开发板修改综合例程的图标" class="headerlink" title="开发板修改综合例程的图标"></a>开发板修改综合例程的图标</h2><p>在综合例程的mainui.c里面mui_icos_path_tbl结构体里面是应用图标的目录地址和文件名，可以在这里修改目录地址和文件，然后在把我们提供的SD卡根目录文件复制到SD卡里面，再把要修改的图标替换进去，更新到外部FLSH即可。</p>
+<h2 id="MPU9250如何驱动"><a href="#MPU9250如何驱动" class="headerlink" title="MPU9250如何驱动"></a>MPU9250如何驱动</h2><p>MPU9250是由MPU6050和AK8963构成，因此和MPU6050的驱动是一样的。</p>
+<br/>
+
+<h2 id="战舰V2资料"><a href="#战舰V2资料" class="headerlink" title="战舰V2资料"></a>战舰V2资料</h2><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Sr2U-iLgrQqhtRIbwlEUUQ">https://pan.baidu.com/s/1Sr2U-iLgrQqhtRIbwlEUUQ</a> 提取码：q73g</p>
+<br/>
+
+<h2 id="STLINK可以通过stlinkreflash转成Jlink"><a href="#STLINK可以通过stlinkreflash转成Jlink" class="headerlink" title="STLINK可以通过stlinkreflash转成Jlink"></a>STLINK可以通过stlinkreflash转成Jlink</h2><p>stlinkreflash</p>
+<br/>
+
+<h2 id="北极星H750下载失败"><a href="#北极星H750下载失败" class="headerlink" title="北极星H750下载失败"></a>北极星H750下载失败</h2><p>讲H750的外部FLASH下载算法放到 MDK5 安装目录→ARM→Flash 文件夹里面，然后在MDK里添加该算法，该算法在资料A盘里的软件资料里的MDK里</p>
+<br/>
+
+<h2 id="STLINK烧录失败汇总及解决方法"><a href="#STLINK烧录失败汇总及解决方法" class="headerlink" title="STLINK烧录失败汇总及解决方法"></a>STLINK烧录失败汇总及解决方法</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.openedv.com/forum.php?mod=viewthread&amp;tid=324561&amp;highlight=STLINK">http://www.openedv.com/forum.php?mod=viewthread&amp;tid=324561&amp;highlight=STLINK</a></p>
+</blockquote>
+<br/>
+
+<h2 id="flymcu下载失败解决方法"><a href="#flymcu下载失败解决方法" class="headerlink" title="flymcu下载失败解决方法"></a>flymcu下载失败解决方法</h2><p>1、安装CH340驱动，并且连接上板子后设备管理器能识别到CH340的设备。</p>
+<p>2、USB线连上板子的USB_232口，并且串口1的跳线帽要插好；或者USB转TTL模块连上芯片的串口1，板子上电。板子的boot1和boot0接GND</p>
+<p>3、flymcu搜索串口后选择CH340的串口，STM32F1波特率随便设，F4波特率在38400以下。建议波特率不要设置太高，否则下载失败概率较大。</p>
+<p>4、flymcu下边选择DTR低电平复位，RTS高电平进BootLoader。</p>
+<p>5、flymcu勾选编程前重装文件、校验、编程后执行，其他统一不勾选。</p>
+<p>6、flymcu点击开始编程，如果卡住的话，按一下板子的复位按键。还不行的话，把板子的boot0接3.3V，再次重新点击开始编程，复位。</p>
+<br/>
+
+<h2 id="SIM800C和SIM900A对比"><a href="#SIM800C和SIM900A对比" class="headerlink" title="SIM800C和SIM900A对比"></a>SIM800C和SIM900A对比</h2><p><img src="https://i.loli.net/2021/05/26/DkigUWpKxQdsAv2.png" alt="对比结果"></p>
+
+            </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://orangeh.gitee.io/2021/05/26/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://orangeh.gitee.io/2021/05/26/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/";
+            const title         = "「STM32技术支持所遇常见问题」";
+            const excerpt       = `Could not open file ..\obj\sys.o: No such file or directory解决办法
+3个可能的原因：
+
+**电脑系统用户名有中文字符 **
+**MDK安装目录有中文字符或者空格存在 **
+环...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2021-05-26</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" Markdown语法笔记" href="/2021/04/08/Markdown语法笔记/">&lt; 上一篇</a>
+                </div>
+                
+                
+            </nav>
+        
+        
+    </article>
+</section>
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/Icon.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">Orange自建博客小站，仅用于笔记与分享</p>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix">
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar"></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Could-not-open-file-obj-sys-o-No-such-file-or-directory%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-text">Could not open file ..\obj\sys.o: No such file or directory解决办法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BF%E7%9C%9F%E5%99%A8%E7%83%A7%E5%86%99%E5%A4%B1%E8%B4%A5"><span class="toc-text">仿真器烧写失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP8266-2-4G%E6%97%A0%E7%BA%BF%E6%A8%A1%E5%9D%97-SIM800C%E8%93%9D%E7%89%99%E6%A8%A1%E5%9D%97-%E9%80%9A%E4%BF%A1%E8%B7%9D%E7%A6%BB"><span class="toc-text">ESP8266&#x2F;2.4G无线模块&#x2F;SIM800C蓝牙模块 通信距离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%AF%E7%89%87%E8%A2%AB%E9%94%81%E6%AD%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">芯片被锁死的解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32-%E5%90%84%E7%B3%BB%E5%88%97%E8%8A%AF%E7%89%87%E5%8C%85%E5%9B%BA%E4%BB%B6%E5%8C%85pack"><span class="toc-text">STM32 各系列芯片包固件包pack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32-One-or-more-Device-Family-Pack-Devices-are-not-present%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">STM32 One or more Device Family Pack Devices are not present解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MiniPro-%E6%94%AF%E6%8C%81%E7%9A%84%E8%8A%AF%E7%89%87%E7%B1%BB%E5%9E%8B"><span class="toc-text">MiniPro 支持的芯片类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Minipro-%E5%A6%82%E4%BD%95%E5%8D%87%E7%BA%A7%E5%9B%BA%E4%BB%B6"><span class="toc-text">Minipro 如何升级固件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E5%8F%A3%E5%A6%82%E4%BD%95%E7%83%A7%E5%86%99-%E7%83%A7%E5%BD%95-%E4%B8%8B%E8%BD%BD-%E7%A8%8B%E5%BA%8F"><span class="toc-text">串口如何烧写 烧录 下载 程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E7%BA%B9%E6%A8%A1%E5%9D%97-ATK-301-%E6%9D%83%E9%99%90%E9%AA%8C%E8%AF%81"><span class="toc-text">指纹模块 ATK-301 权限验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP8266%E5%A6%82%E4%BD%95%E7%83%A7%E5%86%99%E6%9C%BA%E6%99%BA%E4%BA%91GAgent%E5%9B%BA%E4%BB%B6"><span class="toc-text">ESP8266如何烧写机智云GAgent固件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DS100%E7%A4%BA%E6%B3%A2%E5%99%A8%E5%BC%80%E6%BA%90%E5%90%97"><span class="toc-text">DS100示波器开源吗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%8F%E5%B9%95%E4%B8%8D%E4%BA%AE"><span class="toc-text">屏幕不亮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP8266%E7%9A%84FLASH%E5%A4%A7%E5%B0%8F"><span class="toc-text">ESP8266的FLASH大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32%E8%8A%AF%E7%89%87%E5%91%BD%E5%90%8D%E5%90%AB%E4%B9%89"><span class="toc-text">STM32芯片命名含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CH340%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5"><span class="toc-text">CH340驱动安装失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%B7%A5%E7%A8%8B%E5%87%BA%E7%8E%B0%E6%89%BE%E4%B8%8D%E5%88%B0core-cm3-o%E6%96%87%E4%BB%B6"><span class="toc-text">编译工程出现找不到core_cm3.o文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%84%E5%83%8F%E5%A4%B4%E6%8E%A8%E8%8D%90"><span class="toc-text">摄像头推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%B3%BB%E5%88%97%E5%BC%80%E5%8F%91%E6%9D%BF%E5%A4%96%E5%9B%B4%E7%94%B5%E8%B7%AF%E5%A4%96%E8%AE%BE%E8%8A%AF%E7%89%87%E8%B5%84%E6%BA%90"><span class="toc-text">各系列开发板外围电路外设芯片资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MDK-%E5%90%84%E7%89%88%E6%9C%AC%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85pack"><span class="toc-text">MDK 各版本软件安装包pack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32%E6%89%93%E5%BC%80%E5%B7%A5%E7%A8%8B%E6%8A%A5%E9%94%99%E2%80%9CLoading-PDSC-Debug-Description-Failed-for-STMicroelectronics-STM32Lxxxxxxx%E2%80%9D"><span class="toc-text">STM32打开工程报错“Loading PDSC Debug Description Failed for STMicroelectronics STM32Lxxxxxxx”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DTU%E3%80%81LTE%E3%80%81GPRS%E5%8F%82%E6%95%B0%E5%AF%B9%E6%AF%94"><span class="toc-text">DTU、LTE、GPRS参数对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEIL4%E5%B7%A5%E7%A8%8B%E8%BD%AC%E5%88%B0KEIL5-%E6%8A%A5%E9%94%99-CORE-core-cm4-h-169-error-5-cannot-open-source-input-file-%E2%80%9Ccore-cmInstr-h%E2%80%9D-No-such-file-or-directory"><span class="toc-text">KEIL4工程转到KEIL5 报错..\CORE\core_cm4.h(169): error:  #5: cannot open source input file “core_cmInstr.h”: No such file or directory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEIL%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90BIN%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6"><span class="toc-text">KEIL编译环境如何生成BIN格式文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E7%AB%AF%E6%A0%BC%E5%BC%8F%E5%92%8C%E5%B0%8F%E7%AB%AF%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">大端格式和小端格式的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#printf%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0%E4%B8%B2%E5%8F%A3"><span class="toc-text">printf重定向到串口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DAP%E4%BB%BF%E7%9C%9F%E5%99%A8%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5"><span class="toc-text">DAP仿真器下载失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32%E8%AF%BB%E4%BF%9D%E6%8A%A4%E4%B8%89%E4%B8%AA%E7%AD%89%E7%BA%A7%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">STM32读保护三个等级的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32F429%E5%AF%B9RGB%E5%B1%8F%E5%B9%95%E6%94%AF%E6%8C%81%E7%9A%84%E5%88%86%E8%BE%A8%E7%8E%87%E9%99%90%E5%88%B6"><span class="toc-text">STM32F429对RGB屏幕支持的分辨率限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FSMC%E5%92%8CFMC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">FSMC和FMC的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ROM%E3%80%81RAM%E3%80%81DRAM%E3%80%81SRAM%E3%80%81SDRAM%E5%92%8CFLASH%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">ROM、RAM、DRAM、SRAM、SDRAM和FLASH的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%80%E8%9E%BA%E4%BB%AA%E5%92%8C%E5%8A%A0%E9%80%9F%E5%BA%A6%E8%AE%A1MPU6050%E7%9A%84%E5%8D%95%E4%BD%8D%E6%8D%A2%E7%AE%97%E6%96%B9%E6%B3%95"><span class="toc-text">陀螺仪和加速度计MPU6050的单位换算方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A2%E7%B4%A2%E8%80%85%E5%87%BA%E7%8E%B0-EX-Flash-error"><span class="toc-text">探索者出现 EX Flash error</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ST-LINK-USB-communication-error%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">ST-LINK USB communication error解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEIL%E4%BB%BF%E7%9C%9FSTM32F103%E6%97%B6%E5%81%9C%E5%9C%A8Reset-Handler%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8"><span class="toc-text">KEIL仿真STM32F103时停在Reset_Handler无法启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Keil-%E4%B8%8B%E8%BD%BD%E7%A8%8B%E5%BA%8F%E6%97%B6%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF%EF%BC%9A-No-Algorithm-found-for"><span class="toc-text">Keil  下载程序时出现错误： No Algorithm found for</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UART%E4%B8%8EUSART%E5%8C%BA%E5%88%AB"><span class="toc-text">UART与USART区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Symbol-XXX-multiply-defined-by-usart-o-and-main-o-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">Symbol XXX multiply defined (by usart.o and main.o).解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#warning-function-declared-implicitly"><span class="toc-text">warning: function declared implicitly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32F407%E6%8E%A2%E7%B4%A2%E8%80%85%E7%9A%84%E5%A4%96%E9%83%A8SPI-FLASH-W25Q128-%E6%98%AF16M%E7%9A%84%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%BB%E5%8D%A1%E5%99%A8%E5%AE%9E%E9%AA%8C%E4%B8%BA12M"><span class="toc-text">STM32F407探索者的外部SPI FLASH W25Q128 是16M的为什么读卡器实验为12M</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%99HC-05%E3%80%81WIFI%E6%A8%A1%E5%9D%97%E7%AD%89%E5%8F%91AT%E6%8C%87%E4%BB%A4-%E6%97%A0%E5%93%8D%E5%BA%94-%E6%9C%AA%E5%9B%9E%E5%A4%8DOK"><span class="toc-text">给HC-05、WIFI模块等发AT指令 无响应 未回复OK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32F1-IO%E5%8F%A3%E9%A9%B1%E5%8A%A8%E7%94%B5%E6%B5%81%E5%A4%9A%E5%A4%A7-%E6%8B%89%E7%94%B5%E6%B5%81%E5%92%8C%E7%81%8C%E7%94%B5%E6%B5%81%E5%A4%9A%E5%A4%A7"><span class="toc-text">STM32F1 IO口驱动电流多大 拉电流和灌电流多大</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A2%E7%89%B9%E7%8E%87%E7%9A%84%E4%BC%A0%E8%BE%93%E9%80%9F%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="toc-text">波特率的传输速度计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LORA%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BD%8D%E6%9C%BA%E5%8F%82%E6%95%B0%E4%BF%9D%E5%AD%98"><span class="toc-text">LORA模块上位机参数保存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IMU901%E5%8D%81%E8%BD%B4%E5%8F%82%E6%95%B0"><span class="toc-text">IMU901十轴参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%88%86%E5%88%AB%E5%9E%8B%E5%8F%B7"><span class="toc-text">集成电路分别型号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEIL5-%E7%8A%B6%E6%80%81%E6%A0%8F-%E5%9B%BE%E6%A0%87%E9%94%99%E4%B9%B1%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="toc-text">KEIL5 状态栏 图标错乱怎么办</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keil5%E7%9A%84%E7%83%A7%E5%86%99%E6%8C%89%E9%92%AE%E6%98%AF%E7%81%B0%E8%89%B2%E7%9A%84"><span class="toc-text">keil5的烧写按钮是灰色的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keil%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0Reprogramming-flash"><span class="toc-text">keil调试过程中遇到Reprogramming flash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E6%A4%8DSTM32F103C8T6-delay%E5%BB%B6%E6%97%B6%E4%B8%8D%E5%87%86"><span class="toc-text">移植STM32F103C8T6 delay延时不准</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#declaration-is-incompatible-with-previous-%E2%80%9CFuncName%E2%80%9D-declared-at-line-XXX"><span class="toc-text">declaration is incompatible with previous “FuncName” (declared at line XXX)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SIM800C%E7%9A%84%E8%8A%AF%E7%89%87IC"><span class="toc-text">SIM800C的芯片IC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#printf%E6%89%93%E5%8D%B0%E9%81%87%E5%88%B00%E4%BC%9A%E5%81%9C%E6%AD%A2"><span class="toc-text">printf打印遇到0会停止</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LORA%E6%A8%A1%E5%9D%97%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%E7%9A%84%E5%BB%B6%E8%BF%9F"><span class="toc-text">LORA模块传输数据的延迟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FLASH%E6%89%87%E5%8C%BA%E6%93%A6%E9%99%A4%E6%97%A0%E6%95%88"><span class="toc-text">FLASH扇区擦除无效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Error-Flash-Download-failed-Could-not-load-file-%E2%80%98E-Temp-Obj-temp-axf"><span class="toc-text">Error: Flash Download failed - Could not load file ‘E:\Temp\Obj\temp.axf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Undefined-symbol"><span class="toc-text">Undefined symbol</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E7%A8%8B%E6%96%87%E4%BB%B6%E6%84%9F%E5%8F%B9%E5%8F%B7%EF%BC%8C%E6%96%87%E4%BB%B6%E6%89%BE%E4%B8%8D%E5%88%B0"><span class="toc-text">例程文件感叹号，文件找不到</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RTC%E6%97%B6%E9%92%9F%E4%B8%8D%E5%8F%98"><span class="toc-text">RTC时钟不变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IIC%E6%AD%BB%E9%94%81%E7%9A%84%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">IIC死锁的原因及解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEIL%E8%BF%9B%E8%A1%8C%E8%BD%AF%E4%BB%B6%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%97%B6%E5%80%99%E5%8D%A1%E5%9C%A8LCD%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">KEIL进行软件仿真的时候卡在LCD初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEIL%E6%89%93%E5%BC%80%E5%B7%A5%E7%A8%8B%E6%8A%A5%E9%94%99%E2%80%9DLoading-PDSC-Debug-Description-Failed-for-STMicroelectronics-STM32Lxxxxxxx%E2%80%9D"><span class="toc-text">KEIL打开工程报错”Loading PDSC Debug Description Failed for STMicroelectronics STM32Lxxxxxxx”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32-%E4%B8%ADCode%E3%80%81RO-data%E3%80%81RW-data%E3%80%81ZI-data%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-text">STM32 中Code、RO-data、RW-data、ZI-data的含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32F103RCT6%E7%A7%BB%E6%A4%8D%E5%88%B0STM32F103C8T6%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-%E7%A7%BB%E6%A4%8D%E6%AD%A5%E9%AA%A4"><span class="toc-text">STM32F103RCT6移植到STM32F103C8T6注意事项 移植步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BF%AE%E6%94%B9%E7%BB%BC%E5%90%88%E4%BE%8B%E7%A8%8B%E7%9A%84%E5%9B%BE%E6%A0%87"><span class="toc-text">开发板修改综合例程的图标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MPU9250%E5%A6%82%E4%BD%95%E9%A9%B1%E5%8A%A8"><span class="toc-text">MPU9250如何驱动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%98%E8%88%B0V2%E8%B5%84%E6%96%99"><span class="toc-text">战舰V2资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STLINK%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87stlinkreflash%E8%BD%AC%E6%88%90Jlink"><span class="toc-text">STLINK可以通过stlinkreflash转成Jlink</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%97%E6%9E%81%E6%98%9FH750%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5"><span class="toc-text">北极星H750下载失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STLINK%E7%83%A7%E5%BD%95%E5%A4%B1%E8%B4%A5%E6%B1%87%E6%80%BB%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">STLINK烧录失败汇总及解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flymcu%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">flymcu下载失败解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SIM800C%E5%92%8CSIM900A%E5%AF%B9%E6%AF%94"><span class="toc-text">SIM800C和SIM900A对比</span></a></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/">Markdown语法笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/STM32/">STM32</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Markdown/" style="font-size: 0.6em;">Markdown</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.6em;">笔记</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2021/05/26/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"><i class="fa  fa-book"></i> STM32技术支持所遇常见问题</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/04/08/Markdown%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/"><i class="fa  fa-book"></i> Markdown语法笔记</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/04/01/index/"><i class="fa  fa-book"></i> 首页</a>
+            
+          
+        
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/CandyUnion"><i class="fa fa-telegram"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@Candinya"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/Candinya"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Orange的小站 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by Orange.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
